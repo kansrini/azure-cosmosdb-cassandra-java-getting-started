@@ -27,6 +27,8 @@ One of the supported APIs on Azure Cosmos DB is the Cassandra API, which provide
        cassandra_port=<Cassandra endpoint connection port>
        cassandra_username=<Cassandra endpoint username>
        cassandra_password=<Cassandra endpoint username>
+       ssl_keystore_file_path=<SSL Keystore file path>
+       ssl_keystore_password=<SSL Keystore password>
    ```
 
 * Run the Samples under azure-cosmosdb-cassandra-java-getting-started/java-examples/src/main/java/com/azure/cosmosdb/cassandra/examples. 
@@ -50,7 +52,7 @@ These steps needs be used to setup the keyspace and tables to run the examples g
 	set CQLSH_PORT=10350
         set SSL_VERSION=TLSv1_2
         set SSL_VALIDATE=false
-        set SSL_CERTFILE=[path-to-ssl-cer-above] 
+        set SSL_CERTFILE=[path-to-ssl-cer]
         cqlsh -u [nameOfCosmosDBAccount] -p [accountKeyOfCosmosDBAccount] -ssl
     ```
     On Windows, run the following:
