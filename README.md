@@ -22,12 +22,12 @@ One of the supported APIs on Azure Cosmos DB is the Cassandra API, which provide
    * Then, clone this repository using `git clone https://github.com/kansrini/azure-cosmosdb-cassandra-java-getting-started.git`.
    * Run azure-cosmosdb-cassandra-java-getting-started/java-examples/src/main/resources/setup-cassandra.cql to setup initial keyspace on Cassandra DB. you can use CQLSH to run queries as mentioned in the below section
    * Provide the following configuration in azure-cosmosdb-cassandra-java-getting-started/java-examples/src/main/resources/config.properties
-....```
-........cassandra_host=<Cassandra endpoint connection host>
-........cassandra_port=<Cassandra endpoint connection port>
-........cassandra_username=<Cassandra endpoint username>
-........cassandra_password=<Cassandra endpoint username>
-....```
+   ```
+       cassandra_host=<Cassandra endpoint connection host>
+       cassandra_port=<Cassandra endpoint connection port>
+       cassandra_username=<Cassandra endpoint username>
+       cassandra_password=<Cassandra endpoint username>
+   ```
 
 * Run the Samples under azure-cosmosdb-cassandra-java-getting-started/java-examples/src/main/java/com/azure/cosmosdb/cassandra/examples. 
 
@@ -47,22 +47,24 @@ These steps needs be used to setup the keyspace and tables to run the examples g
 
 4.	Run the following to open a CQLSH prompt to run any cassandra queries 
     ```
-	set CQLSH_PORT=10350 
-    cqlsh -u [nameOfCosmosDBAccount] -p [accountKeyOfCosmosDBAccount] 
-	  ```
+	set CQLSH_PORT=10350
+        set SSL_VERSION=TLSv1_2
+        set SSL_VALIDATE=false
+        set SSL_CERTFILE=[path-to-ssl-cer-above] 
+        cqlsh -u [nameOfCosmosDBAccount] -p [accountKeyOfCosmosDBAccount] -ssl
+    ```
     On Windows, run the following:
-	  ```
-    $python\python.exe "{Path to} cassandra\bin\cqlsh.py" <IPADDRESS> <PORT> --connect-timeout=600 --request-timeout=600 -u <accountName> -p <password> 
+    ```
+    $python\python.exe "{Path to} cassandra\bin\cqlsh.py" <IPADDRESS> <PORT> --ssl --connect-timeout=600 --request-timeout=600 -u <accountName> -p <password> 
     ```
 5. To setup keyspace & tables to run the examples use the following command
 	```	
-    cqlsh -u [nameOfCosmosDBAccount] -p [accountKeyOfCosmosDBAccount] < <ProjectLocation>/azure-cosmosdb-cassandra-java-getting-started/java-examples/src/main/resources/setup-cassandra.cql
+    cqlsh -u [nameOfCosmosDBAccount] -p [accountKeyOfCosmosDBAccount] --ssl < <ProjectLocation>/azure-cosmosdb-cassandra-java-getting-started/java-examples/src/main/resources/setup-cassandra.cql
 	```
     On Windows, run the following:
 	```
-    $python\python.exe "{Path to} cassandra\bin\cqlsh.py" <IPADDRESS> <PORT> --connect-timeout=600 --request-timeout=600 -u <accountName> -p <password> < <ProjectLocation>/azure-cosmosdb-cassandra-java-getting-started/java-examples/src/main/resources/setup-cassandra.cql
+    $python\python.exe "{Path to} cassandra\bin\cqlsh.py" <IPADDRESS> <PORT> --ssl --connect-timeout=600 --request-timeout=600 -u <accountName> -p <password> < <ProjectLocation>/azure-cosmosdb-cassandra-java-getting-started/java-examples/src/main/resources/setup-cassandra.cql
     ```
-
 
 ## More information
 
